@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "452123053084",
+    "project_id": "uber-ment",
+    "storage_bucket": "uber-ment.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:452123053084:android:17099d6cf019be15f7a3d9",
+        "android_client_info": {
+          "package_name": "com.example.uber_clonsito"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "452123053084-qd2k2c5mbtat8l0tk3behsfvm7qaqij1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB2OLFGJe2sPOzX9RrPLJaiLtPz6V_7JPw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "452123053084-qd2k2c5mbtat8l0tk3behsfvm7qaqij1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
