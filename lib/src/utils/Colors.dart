@@ -6,6 +6,7 @@ class Colors{
   static const Color TerceroUber = Color(0xFFfff33f);
   static const Color CuartoUber = Color(0xFFb0b0b0);
   static const Color QuintoUber = Color(0xFFffffff);
+  static const Color SextoUber = Color(0xFFFEFDFD);
 }
 
 //Colores a usar de la app

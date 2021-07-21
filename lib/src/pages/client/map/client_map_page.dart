@@ -99,7 +99,7 @@ class _ClientMapPageState extends State<ClientMapPage> {
                     maxLines: 1,
                   ),
                 ),
-                SizedBox(height: 10),
+                SizedBox(height: 4),
                 CircleAvatar(
                   backgroundImage: AssetImage('assets/img/Perfil_Cliente.jpg'),
                   radius: 40,
@@ -185,7 +185,7 @@ class _ClientMapPageState extends State<ClientMapPage> {
       alignment: Alignment.bottomCenter,
       margin: EdgeInsets.symmetric(horizontal: 60, vertical: 30),
       child: ButtonApp(
-        onPressed: () {},
+        onPressed: _con.requestDriver,
         text: 'Confirmar viaje',
         color: _con.isConnect
             ? utils.Colors.CuartoUber
@@ -221,14 +221,14 @@ class _ClientMapPageState extends State<ClientMapPage> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              _infoCardLocation('Desde', _con.from ?? '', () async {
+              _infoCardLocation('Ingresa punto de partida', _con.from ?? '', () async {
                 await _con.showGoogleAutocomplete(true);
               }),
               SizedBox(height: 5),
               Container(
                   child: Divider(color: utils.Colors.CuartoUber, height: 10)),
               SizedBox(height: 5),
-              _infoCardLocation('Hasta', _con.to ?? '', () async {
+              _infoCardLocation('¿A donde vamos?', _con.to ?? '', () async {
                 await _con.showGoogleAutocomplete(false);
               }),
             ],
@@ -241,7 +241,9 @@ class _ClientMapPageState extends State<ClientMapPage> {
   Widget _infoCardLocation(String title, String value, Function function) {
     return GestureDetector(
       onTap: function,
-          child: Column(children: [
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
         Text(
           title,
           style: TextStyle(color: utils.Colors.CuartoUber, fontSize: 15),

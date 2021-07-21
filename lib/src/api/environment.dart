@@ -1,3 +1,3 @@
 class Environment {
-  static const String API_KEY_MAPS = 'AIzaSyD5Uso40NL-6DtzEhxdJ8TlwNPjD8TTfb4';
+  static const String API_KEY_MAPS = 'AIzaSyA0_H60x1RV5HhcGS0iXOeFyS_PPctzjmE';
 }

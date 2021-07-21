@@ -43,7 +43,8 @@ class ClientMapController {
 
   bool isConnect = false;
 
-  places.GoogleMapsPlaces _places = places.GoogleMapsPlaces(apiKey: Environment.API_KEY_MAPS);
+  places.GoogleMapsPlaces _places =
+      places.GoogleMapsPlaces(apiKey: Environment.API_KEY_MAPS);
   // ignore: unused_field
   ProgressDialog _progressDialog;
 
@@ -116,40 +117,63 @@ class ClientMapController {
       print('Error en la localización: $error');
     }
   }
-
-  // ignore: non_constant_identifier_names
-  void ChangeFromTo(){
-    isFromSelected = !isFromSelected;
-    if (isFromSelected) {
-      utils.Snackbar.showSnackbar(context, key, 'Estas Seleccionando el lugar de recogida');
+  //Enviar a la pantalla de confirmar viaje (versión de dart v3.20.1)
+  void requestDriver(){
+    if (fromLatLng != null && toLatLng != null) {
+      Navigator.pushNamed(context, 'client/travel/info', arguments: {
+        'from': from,
+        'to': to,
+        'fromLatLng': fromLatLng,
+        'toLatLng': toLatLng,
+      });
     } else {
-      utils.Snackbar.showSnackbar(context, key, 'Estas Seleccionando el destino');
+      utils.Snackbar.showSnackbar(context, key,'Seleccionar el punto de partida y destino');
     }
   }
 
-  Future<Null> showGoogleAutocomplete(bool isFrom) async{
+  // ignore: non_constant_identifier_names
+  void ChangeFromTo() {
+    isFromSelected = !isFromSelected;
+    if (isFromSelected) {
+      utils.Snackbar.showSnackbar(
+          context, key, 'Estas Seleccionando el lugar de recogida');
+    } else {
+      utils.Snackbar.showSnackbar(
+          context, key, 'Estas Seleccionando el destino');
+    }
+  }
+
+  Future<Null> showGoogleAutocomplete(bool isFrom) async {
     places.Prediction p = await PlacesAutocomplete.show(
-    context: context,
-    apiKey: Environment.API_KEY_MAPS,
-    language: 'es',
-    );
+        context: context,
+        apiKey: Environment.API_KEY_MAPS,
+        language: 'es',
+        strictbounds: true,
+        radius: 20000,
+        location: places.Location(19.2622211, -99.6339932));
+
     if (p != null) {
-      places.PlacesDetailsResponse detail = 
-      await _places.getDetailsByPlaceId(p.placeId, language: 'es');
+      places.PlacesDetailsResponse detail =
+          await _places.getDetailsByPlaceId(p.placeId, language: 'es');
       double lat = detail.result.geometry.location.lat;
       double lng = detail.result.geometry.location.lng;
-      List<Address> address = await Geocoder.local.findAddressesFromQuery(p.description);
+      List<Address> address =
+          await Geocoder.local.findAddressesFromQuery(p.description);
       if (address != null) {
-        if (address.length>0) {
+        if (address.length > 0) {
           if (detail != null) {
             String direction = detail.result.name;
             String city = address[0].locality;
             // ignore: unused_local_variable
             String departmen = address[0].adminArea;
-
-            from = '$direction, $city, department';
-            fromLatLng = new LatLng(lat,lng
-            );
+            if (isFrom) {
+              from = '$direction, $city, department';
+              fromLatLng = new LatLng(lat, lng);
+            } else {
+              to = '$direction, $city, department';
+              toLatLng = new LatLng(lat, lng);
+            }
+            refresh();
           }
         }
       }

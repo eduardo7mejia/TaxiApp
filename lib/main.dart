@@ -1,6 +1,8 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:uber_clonsito/src/pages/client/map/client_map_page.dart';
+import 'package:uber_clonsito/src/pages/client/travel_info/client_travel_info_page.dart';
+import 'package:uber_clonsito/src/pages/client/travel_request/client_travel_request_page.dart';
 import 'package:uber_clonsito/src/pages/driver/map/driver_map_page.dart';
 import 'package:uber_clonsito/src/pages/driver/register/driver_register_page.dart';
 import 'package:uber_clonsito/src/pages/home/home_page.dart';
@@ -40,6 +42,8 @@ class _MyAppState extends State<MyApp> {
         'driver/register': (BuildContext context) => DriverRegisterPage(),
         'driver/map': (BuildContext context) => DriverMapPage(),
         'client/map': (BuildContext context) => ClientMapPage(),
+        'client/travel/info': (BuildContext context) => ClientTravelInfoPage(),
+        'client/travel/request': (BuildContext context) => ClientTravelRequestPage(),
       },
     );
   }

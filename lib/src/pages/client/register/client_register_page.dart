@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_custom_clippers/flutter_custom_clippers.dart';
+import 'package:lottie/lottie.dart';
 import 'package:uber_clonsito/src/pages/client/register/client_register_controller.dart';
 import 'package:uber_clonsito/src/utils/Colors.dart' as utils;
 import 'package:uber_clonsito/src/widgets/button_app.dart';
@@ -59,10 +60,11 @@ class _ClientRegisterPageState extends State<ClientRegisterPage> {
           //Separar imagen con el texto
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            Image.asset(
-              'assets/img/register2.png',
-              width: 150,
-              height: 200,
+          Lottie.asset(
+              'assets/json/registrar2.json',
+              width: 200,
+              height: 300,
+              fit: BoxFit.fill,
             ),
             Text('Bienvenido',
                 style: TextStyle(

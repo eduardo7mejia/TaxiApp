@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_custom_clippers/flutter_custom_clippers.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:lottie/lottie.dart';
 import 'package:uber_clonsito/src/pages/home/home_controllers.dart';
 import 'package:uber_clonsito/src/utils/Colors.dart' as utils;
 
@@ -81,10 +82,11 @@ class _HomePageState extends State<HomePage> {
           //Separar imagen con el texto
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            Image.asset(
-              'assets/img/Logo.png',
+          Lottie.asset(
+              'assets/json/car-ment.json',
               width: 200,
-              height: 220,
+              height: 180,
+              fit: BoxFit.fill,
             ),
             Text('"Rapido y Seguro"',
                 style: TextStyle(

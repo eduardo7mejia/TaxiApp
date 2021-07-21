@@ -88,7 +88,7 @@ class _DriverMapPageState extends State<DriverMapPage> {
                     maxLines: 1,
                   ),
                 ),
-                SizedBox(height: 10),
+                SizedBox(height: 4),
                 CircleAvatar(
                   backgroundImage:
                       AssetImage('assets/img/Perfil_Conductor.jpg'),
